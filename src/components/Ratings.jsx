@@ -15,8 +15,8 @@ function Ratings(props) {
                 totalStars.map((item, index) => {
                     return (
                         index < count ?
-                            <FontAwesomeIcon className='text-warning' icon={faStar} />
-                            : <FontAwesomeIcon className='text-white' icon={faStarSolid} />
+                            <FontAwesomeIcon key={index} className='text-warning' icon={faStar} />
+                            : <FontAwesomeIcon key={index} className='text-white' icon={faStarSolid} />
                     )
                 })
             }
