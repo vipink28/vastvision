@@ -11,7 +11,8 @@ import axios from "../helper/axios";
 function Row(props) {
     const { action, selector, title, type, genres, isPoster } = props;
     const dispatch = useDispatch();
-    const videoList = useSelector(selector);
+    const videoList = useSelector(selector ? selector : () => { });
+    console.log(videoList);
     const [videoByGenre, setVideoByGenre] = useState(null);
 
 
@@ -33,8 +34,8 @@ function Row(props) {
             <h3 className="mb-3 text-white ">{title}</h3>
             <Swiper
                 modules={[Navigation]}
-                spaceBetween={10}
-                slidesPerView={6}
+                spaceBetween={20}
+                slidesPerView={5}
                 navigation
             >
                 {
@@ -42,16 +43,16 @@ function Row(props) {
                         return (
                             item.backdrop_path ?
                                 <SwiperSlide key={item.id}>
-                                    <Card video={item} type={type} isPoster={isPoster} />
+                                    <Card video={item} streamType={type} isPoster={isPoster} />
                                 </SwiperSlide> : ""
                         );
                     })
                         :
-                        videoList.data?.results?.map((item) => {
+                        videoList?.data?.results?.map((item) => {
                             return (
                                 item.backdrop_path ?
                                     <SwiperSlide key={item.id}>
-                                        <Card video={item} type={type} isPoster={isPoster} />
+                                        <Card video={item} streamType={type} isPoster={isPoster} />
                                     </SwiperSlide> : ""
                             );
                         })}

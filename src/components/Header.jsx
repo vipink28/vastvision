@@ -14,7 +14,7 @@ function Header(props) {
     const [showVideo, setShowVideo] = useState(false);
     useEffect(() => {
         if (videoData) {
-            dispatch(fetchHeaderVideo({ type: streamType, id: videoData.id }))
+            dispatch(fetchHeaderVideo({ type: streamType, id: videoData.id }));
         }
     }, [videoData]);
 
@@ -51,7 +51,7 @@ function Header(props) {
                                     {
                                         data?.tagline ? <h3 className='fs-2 tagline text-warning mb-4'>{data.tagline}</h3> : ""
                                     }
-                                    <p className="fs-4 text-white">
+                                    <p className="lead fs-4 text-white">
                                         {truncateText(data?.overview, 150)}
                                     </p>
 

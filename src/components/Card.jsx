@@ -4,13 +4,13 @@ import placeholderImg from '../assets/img-placeholder-dark.jpg';
 import { fetchVideoDetails, streamTypeAction } from "../features/common/commonSlice";
 import { truncateText } from "../helper/helper";
 import Ratings from "./Ratings";
+import { useNavigate } from "react-router-dom";
 
 function Card(props) {
     const { video, streamType, isPoster } = props;
-    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const getDetails = () => {
-        dispatch(fetchVideoDetails({ type: streamType, id: video.id }));
-        dispatch(streamTypeAction(streamType));
+        navigate(`/details/${streamType}/${video.id}`);
     }
     return (
 
